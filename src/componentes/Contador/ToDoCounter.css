@@ -1,0 +1,16 @@
+:root {
+    --ladoBGColor: #040b14;
+    --temaColor: #042135;
+    --iconoBGColor: #2C2F3F;
+    --textoColor: #525252;
+    --bgColor: #F7F7F7;
+}
+
+.titulo{
+    color : rgb(161, 47, 255);
+    text-decoration: overline;
+    font-weight: bold;
+    border-radius: 1rem;    
+    text-align: center;
+    font-size: 40px;
+}

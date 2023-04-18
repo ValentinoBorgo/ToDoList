@@ -1,0 +1,14 @@
+:root {
+    --ladoBGColor: #040b14;
+    --temaColor: #042135;
+    --iconoBGColor: #2C2F3F;
+    --textoColor: #525252;
+    --bgColor: #F7F7F7;
+}
+
+ul {
+    margin: 0;
+    margin-top: 4rem;
+    padding: 0 0 56px 0;
+    list-style: none;
+  }
