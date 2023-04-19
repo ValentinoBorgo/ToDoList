@@ -1,11 +1,8 @@
 import React from "react";
 import './ToDoBuscador.css'
 import { useState } from "react";
-import { ToDoContext } from "../../ToDoContext";
 
-export function ToDoCBuscador(){
-
-    const {buscarToDo, setiarToDo} = React.useContext(ToDoContext);
+export function ToDoCBuscador({buscarToDo, setiarToDo}){
 
     const [] = useState('');
 
@@ -20,7 +17,7 @@ export function ToDoCBuscador(){
 
     return(
         <input className="buscador" 
-        placeholder='Ingresar tu proximo ToDo'
+        placeholder='Buscar un TODO'
         value={buscarToDo}
         // Este evento escucha cada ves que cambia el texto, y te lo devuelve
         onChange={cambiarToDo}

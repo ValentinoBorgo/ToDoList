@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { ToDoContext } from "../ToDoContext";
 import './ToDoForm.css';
 
-export function ToDoForm(){
+export function ToDoForm({añadirToDo, cambiarModal}){
     
-    // El use context me permite traer la funcion añadirToDo 
-    const {añadirToDo, cambiarModal} = React.useContext(ToDoContext);
-
-
     const [nuevoToDoValor, cambiarToDoValor] = useState('');
 
 

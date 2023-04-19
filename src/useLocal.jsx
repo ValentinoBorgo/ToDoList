@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 
-// CREAMOS UN CUSTOM REACT HOOK PARA PODER MODULARIZAR MAS NUESTRA APP.
+// CREAMOS UN CUSTOM REACT HOOK PARA PODER MODULARIZAR MAS NUESTRA APP, funciones que te permiten “enganchar” 
+// el estado de React y el ciclo de vida desde componentes de función.
+
 export function useLocal(itemNombre, valorInicial) {
   
     const [cargando, cambiarCarga] = useState(true);

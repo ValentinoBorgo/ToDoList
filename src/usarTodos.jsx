@@ -5,10 +5,8 @@ import { useState } from 'react';
 //Permite crear contextos que son herramientas que nos dan las PROVIDERS Y CONSUMERS para compartir el ESTADO por
 //  todos los componentes de nuetra app. LOS PROVIDERS PUEDEN SER VISTOS POR TODOS
 
-const ToDoContext = React.createContext()
 
-
-function ToDoProvider(props) {
+function useTodos() {
 
     const {
         Item: todos,
@@ -25,7 +23,7 @@ function ToDoProvider(props) {
     // Creo un ESTADO para mi MODAL.
     const [modalAbierto, cambiarModal] = useState(false);
 
-    let estadoModal = () =>{
+    let estadoModal = () => {
         modalAbierto;
     }
 
@@ -64,7 +62,7 @@ function ToDoProvider(props) {
     const añadirToDo = (text) => {
         const newToDos = [...todos];
         newToDos.push({
-            completed : false,
+            completed: false,
             text,
         });
         guardarToDos(newToDos);
@@ -94,26 +92,21 @@ function ToDoProvider(props) {
 
     // console.log('Render luego del userEffect');
 
-    return (
-        // El PROVIDER contiene todo el estado que vamos a compartir de la app.
-        <ToDoContext.Provider value={{
-            cargando,
-            error,
-            completedToDos,
-            totalToDos,
-            buscarToDo,
-            setiarToDo,
-            buscardorCaracToDo,
-            completeToDo,
-            añadirToDo,
-            eliminarToDo,
-            modalAbierto,
-            cambiarModal,
-            estadoModal,
-        }}>
-            {props.children}
-        </ToDoContext.Provider>
-    )
+    return {
+        cargando,
+        error,
+        completedToDos,
+        totalToDos,
+        buscarToDo,
+        setiarToDo,
+        buscardorCaracToDo,
+        completeToDo,
+        añadirToDo,
+        eliminarToDo,
+        modalAbierto,
+        cambiarModal,
+        estadoModal,
+    }
 }
 
-export {ToDoContext, ToDoProvider};
+export { useTodos };
