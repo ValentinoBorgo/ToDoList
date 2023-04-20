@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa";
 import './CreateToDoButton.css';
 
 export function CreateToDoButton(props) {
@@ -14,7 +13,7 @@ export function CreateToDoButton(props) {
         className={`crearBoton ${props.cargando && 'crearBoton--cargando'}`}
         onClick={onClickBtn}
         >
-        <FaPlus/>
+        +
         </button>
     )
 };
