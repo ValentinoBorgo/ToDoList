@@ -1,0 +1,14 @@
+div{
+    text-align: center;
+}
+
+div h1{
+    color: red;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+div p{
+    color: greenyellow;  
+    font-size: x-large;  
+}

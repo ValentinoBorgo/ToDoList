@@ -32,7 +32,7 @@ export function useLocal(itemNombre, valorInicial) {
         } catch (error) {
           actualizarError(error);
         }
-      }, 1000);
+      }, 2000);
     })
   
   

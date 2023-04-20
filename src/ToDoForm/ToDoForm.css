@@ -71,15 +71,18 @@ textarea:focus {
     border-radius: 0.5rem;
     border: 2px solid transparent;
     transition: 0.4s;
+    font-weight: bold;
 }
 
 .formBtnContainer-btn-cancel {
     background: red;
+    box-shadow: 0px 5px 25px rgba(255, 0, 0, 0.3);
     cursor: pointer;
     font-size: medium;
     border-radius: 0.5rem;
     border: 2px solid transparent;
     transition: 0.4s;
+    font-weight: bold;
 }
 
 .formBtnContainer-btn-añadir:hover{

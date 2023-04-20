@@ -2,7 +2,7 @@ import React from "react";
 import './ToDoBuscador.css'
 import { useState } from "react";
 
-export function ToDoCBuscador({buscarToDo, setiarToDo}){
+export function ToDoCBuscador({buscarToDo, setiarToDo, cargando}){
 
     const [] = useState('');
 
@@ -21,6 +21,8 @@ export function ToDoCBuscador({buscarToDo, setiarToDo}){
         value={buscarToDo}
         // Este evento escucha cada ves que cambia el texto, y te lo devuelve
         onChange={cambiarToDo}
+        //Esta desabilitado mientras la carga sea true.
+        disabled={cargando}
         />
     )
 };

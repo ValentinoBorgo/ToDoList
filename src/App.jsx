@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 
+
 import { useTodos } from './usarTodos';
 import { Modal } from "./Modal";
 import { ToDoLista } from './componentes/Lista/ToDoLista';
@@ -10,6 +11,8 @@ import { ToDoCBuscador } from "./componentes/Buscador/ToDoBuscador";
 import { ToDoCount } from "./componentes/Contador/ToDoCountes";
 import { ToDoForm } from "./ToDoForm";
 import { ToDoHeader } from "./ToDoHeader";
+import { Carga } from './componentes/Carga';
+import { NoEncontrado } from './componentes/NoEncontrado/NoEncontrado';
 
 
 // import './App.css'
@@ -40,68 +43,70 @@ import { ToDoHeader } from "./ToDoHeader";
 
 export function App() {
 
-  const { error,
-    cargando,
-    buscardorCaracToDo,
-    completeToDo,
-    eliminarToDo,
-    modalAbierto,
-    cambiarModal,
-    completedToDos,
-    totalToDos,
-    buscarToDo,
-    setiarToDo, 
-    añadirToDo, } = useTodos();
+    const { error,
+        cargando,
+        buscardorCaracToDo,
+        completeToDo,
+        eliminarToDo,
+        modalAbierto,
+        cambiarModal,
+        completedToDos,
+        totalToDos,
+        buscarToDo,
+        setiarToDo,
+        añadirToDo, } = useTodos();
 
 
     return (
-      // React.Fragment.
-      <>
-          <ToDoHeader>
-              <ToDoCount
-              totalToDos={totalToDos}
-              completedToDos={completedToDos}
-              />
+        // React.Fragment.
+        <>
+            <ToDoHeader cargando={cargando}>
+                <ToDoCount
+                    totalToDos={totalToDos}
+                    completedToDos={completedToDos}
+                />
 
-              <ToDoCBuscador
-              buscarToDo={buscarToDo}
-              setiarToDo={setiarToDo}
-              />
-          </ToDoHeader>
+                <ToDoCBuscador
+                    buscarToDo={buscarToDo}
+                    setiarToDo={setiarToDo}
+                />
+            </ToDoHeader>
 
-          <ToDoLista>
-              {/* ESTADOS */}
-              {error && <p>Error, no se cargo la pagina</p>}
-              {cargando && <p>Cargando...</p>}
-              {(!cargando && !buscardorCaracToDo.length) && <p></p>}
 
-              {/* Aca mapeo los datos del array que va buscando el cliente, no todos los ToDos */}
-              {buscardorCaracToDo.map(todo => (
-                  <ToDoItem
-                      key={todo.text}
-                      text={todo.text}
-                      completed={todo.completed}
-                      onComplete={() => completeToDo(todo.text)}
-                      onDelete={() => eliminarToDo(todo.text)} />
-              ))}
-          </ToDoLista>
+            <ToDoLista>
+                {/* ESTADOS */}
+                {error && <p>Error, no se cargo la pagina</p>}
+                {cargando && <Carga/>}
+                {(!cargando && !buscardorCaracToDo.length) && <NoEncontrado buscarToDo={buscarToDo}/>}
 
-          {/* Si el modal esta abierto(true), renderiza el modal */}
-          {modalAbierto && (
-              <Modal>
-                  <ToDoForm 
-                  añadirToDo={añadirToDo}
-                  cambiarModal={cambiarModal}
-                  />
-              </Modal>
-          )}
+                {/* Aca mapeo los datos del array que va buscando el cliente, no todos los ToDos */}
+                {buscardorCaracToDo.map(todo => (
+                    <ToDoItem
+                        key={todo.text}
+                        text={todo.text}
+                        completed={todo.completed}
+                        onComplete={() => completeToDo(todo.text)}
+                        onDelete={() => eliminarToDo(todo.text)} />
+                ))}
+            </ToDoLista>
 
-          <CreateToDoButton
-              cambiarModal={cambiarModal}
-          />
+            {/* Si el modal esta abierto(true), renderiza el modal */}
+            {modalAbierto && (
+                <Modal>
+                    <ToDoForm
+                        añadirToDo={añadirToDo}
+                        cambiarModal={cambiarModal}
+                    />
+                </Modal>
+            )}
 
-      </>
-  )
+            <CreateToDoButton
+                cambiarModal={cambiarModal}
+                cargando={cargando}
+            />
+
+        </>
+    )
 }
 
 

@@ -60,10 +60,12 @@
     right: 0;
     border: 3px solid gray;
     border-radius: 5rem;
+    transition: 0.4s;
   }
   .Icon-delete:hover {
     color: red;
     border: 3px solid red;
+    transform: scale(1.3);
   }
   
   @media only screen and (max-width:1000px){

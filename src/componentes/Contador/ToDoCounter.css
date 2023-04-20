@@ -14,3 +14,8 @@
     text-align: center;
     font-size: 40px;
 }
+
+/* Cuando mi titulo tenga una variacion (--) de mi prop cargando */
+.titulo--cargando{
+    opacity: 25%;
+}
