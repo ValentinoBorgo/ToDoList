@@ -12,7 +12,9 @@ function useTodos() {
         Item: todos,
         guardarItem: guardarToDos,
         cargando,
+        sincronizacion,
         error,
+        realizarSincro: sincronisarTODOS,
     } = useLocal('TODOS_V1', []);
 
 
@@ -26,6 +28,7 @@ function useTodos() {
     let estadoModal = () => {
         modalAbierto;
     }
+    
 
 
     // Dentro de mi array de ToDos mi todo.complited es verdadero ?.
@@ -94,6 +97,7 @@ function useTodos() {
 
     return {
         cargando,
+        sincronizacion,
         error,
         completedToDos,
         totalToDos,
@@ -106,6 +110,7 @@ function useTodos() {
         modalAbierto,
         cambiarModal,
         estadoModal,
+        sincronisarTODOS,
     }
 }
 

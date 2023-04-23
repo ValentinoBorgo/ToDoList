@@ -1,0 +1,38 @@
+
+div .actualizar{
+    background-color: #F7F7F7;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    box-shadow: 0px 3px 10px var(--bgColor);
+    text-align: center;
+    width: 40%;
+    display: inline-block;
+}
+
+.parra{
+    font-weight: bold;
+    color: red;
+}
+
+.btnActualizar{
+    background-color: blue;
+    border: 1px solid black;
+    border-radius: 5rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 400;
+    position: relative;
+    top: -0.2cm;
+    transition: 0.3s all ease-out;
+}
+
+.btnActualizar:hover{
+    scale: 1.1;
+}
+
+@media only screen and (max-width:735px){
+    div .actualizar{
+        width: 100%;
+    }
+}

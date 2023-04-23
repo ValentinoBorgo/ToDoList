@@ -13,6 +13,8 @@ import { ToDoForm } from "./ToDoForm";
 import { ToDoHeader } from "./ToDoHeader";
 import { Carga } from './componentes/Carga';
 import { NoEncontrado } from './componentes/NoEncontrado/NoEncontrado';
+import { AlertaCmbio } from './AlertaCmbio';
+import { Tostada } from './Tostada/Tostada';
 
 
 // import './App.css'
@@ -45,6 +47,7 @@ export function App() {
 
     const { error,
         cargando,
+        sincronizacion,
         buscardorCaracToDo,
         completeToDo,
         eliminarToDo,
@@ -54,7 +57,8 @@ export function App() {
         totalToDos,
         buscarToDo,
         setiarToDo,
-        añadirToDo, } = useTodos();
+        añadirToDo,
+        sincronisarTODOS, } = useTodos();
 
 
     return (
@@ -72,12 +76,17 @@ export function App() {
                 />
             </ToDoHeader>
 
+            <div>
+                {cargando && <Carga />}
+            </div>
+            {/* se lo tengo que pasar como prop pq sino no lo va a detectar */}
 
-            <ToDoLista>
-                {/* ESTADOS */}
+            <ToDoLista sincronizacion={sincronizacion}>
+
+                {/* ESTADOS : trabajamos con hooks*/}
                 {error && <p>Error, no se cargo la pagina</p>}
-                {cargando && <Carga/>}
-                {(!cargando && !buscardorCaracToDo.length) && <NoEncontrado buscarToDo={buscarToDo}/>}
+                {/* {cargando && <Carga />} */}
+                {(!cargando && !buscardorCaracToDo.length) && <NoEncontrado buscarToDo={buscarToDo} />}
 
                 {/* Aca mapeo los datos del array que va buscando el cliente, no todos los ToDos */}
                 {buscardorCaracToDo.map(todo => (
@@ -86,7 +95,8 @@ export function App() {
                         text={todo.text}
                         completed={todo.completed}
                         onComplete={() => completeToDo(todo.text)}
-                        onDelete={() => eliminarToDo(todo.text)} />
+                        onDelete={() => eliminarToDo(todo.text)}
+                    />
                 ))}
             </ToDoLista>
 
@@ -105,6 +115,9 @@ export function App() {
                 cargando={cargando}
             />
 
+            <AlertaCmbio sincronisar={sincronisarTODOS} />
+
+            <Tostada sincronizacion={sincronizacion} cargando={cargando}/>
         </>
     )
 }

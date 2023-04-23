@@ -9,6 +9,7 @@ export function useLocal(itemNombre, valorInicial) {
     const [cargando, cambiarCarga] = useState(true);
     const [error, actualizarError] = useState(false);
     const [Item, setItem] = useState(valorInicial);
+    const [sincronizacion, setSincronizacion] = useState(true);
   
   
     React.useEffect(() => {
@@ -29,11 +30,13 @@ export function useLocal(itemNombre, valorInicial) {
   
           setItem(parsedItem);
           cambiarCarga(false);
+          setSincronizacion(true);
+      
         } catch (error) {
           actualizarError(error);
         }
       }, 2000);
-    })
+    },[sincronizacion])
   
   
   
@@ -47,11 +50,19 @@ export function useLocal(itemNombre, valorInicial) {
         actualizarError(error);
       }
     }
+
+    // Cuando se realiza la sincronizacion el estado de carga va a ser verdadero y la sincro va a ser falsa
+    const realizarSincro = () =>{
+      cambiarCarga(true);
+      setSincronizacion(false);
+    }
   
     return {
       Item,
       guardarItem,
       cargando,
       error,
+      realizarSincro,
+      sincronizacion,
     };
   }

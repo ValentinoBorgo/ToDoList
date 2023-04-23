@@ -6,7 +6,11 @@
     --bgColor: #F7F7F7;
 }
 
-ul {
+  .sec--carga{
+    display: none;
+  }
+
+  ul{
     margin: 0;
     margin-top: 4rem;
     padding: 0 0 56px 0;
