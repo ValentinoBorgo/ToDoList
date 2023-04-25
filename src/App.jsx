@@ -45,21 +45,28 @@ import { Tostada } from './Tostada/Tostada';
 
 export function App() {
 
-    const { error,
+    const {states, stateUpdate } = useTodos();
+
+    const {
+        error,
         cargando,
-        sincronizacion,
         buscardorCaracToDo,
-        completeToDo,
-        eliminarToDo,
         modalAbierto,
-        cambiarModal,
         completedToDos,
         totalToDos,
         buscarToDo,
-        setiarToDo,
-        añadirToDo,
-        sincronisarTODOS, } = useTodos();
+        sincronizacion,
+    } = states; 
 
+    const {
+        setiarToDo,
+        completeToDo,
+        añadirToDo,
+        eliminarToDo,
+        cambiarModal,
+        estadoModal,
+        sincronisarTODOS,
+    } = stateUpdate;
 
     return (
         // React.Fragment.

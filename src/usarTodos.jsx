@@ -95,23 +95,33 @@ function useTodos() {
 
     // console.log('Render luego del userEffect');
 
-    return {
+
+    const states = {
         cargando,
-        sincronizacion,
         error,
+        buscardorCaracToDo,
+        modalAbierto,
         completedToDos,
         totalToDos,
         buscarToDo,
+        sincronizacion,
+
+    }
+
+
+    const stateUpdate =  {
         setiarToDo,
-        buscardorCaracToDo,
         completeToDo,
         añadirToDo,
         eliminarToDo,
-        modalAbierto,
         cambiarModal,
         estadoModal,
         sincronisarTODOS,
     }
+
+    return {
+        states, stateUpdate,
+    };
 }
 
 export { useTodos };
